@@ -49,11 +49,45 @@
           </n-list-item>
         </n-list>
     </n-card>
+
+    <n-card class="about-card" :bordered="false" title="Request to upload a package">
+      <template #header>
+        <n-space align="center">
+          <n-icon :component="CloudUploadOutline" size="24" color="var(--n-primary-color)" />
+          <n-text strong style="font-size: 20px;">{{ t('uploadPackageTitle') }}</n-text>
+        </n-space>
+      </template>
+      <n-space vertical :size="16">
+        <n-text style="line-height: 1.8;">
+          {{ t('uploadPackageDesc') }}
+        </n-text>
+        <n-text style="line-height: 1.8;">
+          {{ t('uploadPackageStep1') }}
+        </n-text>
+        <pre class="package-tree">
+硬核機動
+├── Kokaku_whiteout.bmp
+├── oppo7.bms
+├── preview_music.ogg
+├── 新しいテキスト ドキュメント.txt
+├── 硬核機動_DPA_.bms
+├── 硬核機動_DPA.bms
+├── 硬核機動_DPH.bms
+├── 硬核機動_DPN.bms
+├── 硬核機動[5K].bms
+├── 硬核機動[9KEYS-H].pms
+└── .......
+        </pre>
+        <n-text style="line-height: 1.8;" v-html="t('uploadPackageStep2')"></n-text>
+        <n-text style="line-height: 1.8;" v-html="t('uploadPackageStep3')"></n-text>
+      </n-space>
+    </n-card>
+    
   </n-space>
 </template>
 
 <script setup lang="ts">
-import { InformationCircleOutline, DownloadOutline, ListOutline, PeopleOutline } from '@vicons/ionicons5';
+import { InformationCircleOutline, DownloadOutline, ListOutline, PeopleOutline, CloudUploadOutline } from '@vicons/ionicons5';
 import { useI18n } from '@/i18n';
 
 const { t } = useI18n();
@@ -101,5 +135,14 @@ function openLink(url: string) {
 :deep(.n-list-item) {
   padding: 12px 16px;
   border-radius: 8px;
+}
+
+.package-tree {
+  background-color: var(--n-code-color, rgba(0, 0, 0, 0.04));
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-family: monospace;
+  overflow-x: auto;
+  line-height: 1.6;
 }
 </style>
